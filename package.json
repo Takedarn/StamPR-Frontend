@@ -1,0 +1,16 @@
+{
+  "name": "kousei-ai",
+  "version": "1.0.0",
+  "description": "HackU 2024KANAZAWA出場作品のフロント部分実装です",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.4"
+  }
+}
