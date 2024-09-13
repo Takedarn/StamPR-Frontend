@@ -4,15 +4,45 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>index.html</title>
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+    <title>kousei-ai</title>
 </head>
 
 <body>
+    <div id="bodyContainer">
+        <div id="appTitleArea">
+            <h1 id="appLogo">校正AIくん</h1>
+        </div>
+    </div>
+    <div id="inputSequenceFormContainer">
+        <div>校正したい文章</div>
+        <input type="text" id="inputSequenceForm" size="100" />
+    </div>
+    <div id="SettingsContainer">
+        <button class="favorite styled" type="button" onclick="convertAndDisplayJSON()">文章を校正する</button>
+    </div>
+    <!-- 以下デバック用 -->
+    <div id="debug">
+        <div id="senedItem">
+            <!-- ここに送信されたJSONが表示される -->
+        </div>
+    </div>
 
-    <h1>test</h1>
-    <h2>public/indexが読み込まれています</h2>
+    <script>
+        function convertAndDisplayJSON() {
+            // 入力フォームからテキストを取得する
+            const inputText = document.getElementById('inputSequenceForm').value;
 
+            // JSON形式に変換する
+            const jsonData = {
+                text: inputText,
+                config: {}
+            };
+
+            // JSONを文字列に変換してhtml内デバック部分に表示する
+            document.getElementById('senedItem').textContent = JSON.stringify(jsonData, null, 2);
+        }
+    </script>
 </body>
 
 </html>
