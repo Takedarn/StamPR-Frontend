@@ -19,30 +19,70 @@
         <input type="text" id="inputSequenceForm" size="100" />
     </div>
     <div id="SettingsContainer">
-        <button class="favorite styled" type="button" onclick="convertAndDisplayJSON()">文章を校正する</button>
+        <button class="favorite styled" type="button" onclick="convertAndSendJSON()">文章を校正する</button>
     </div>
-    <!-- 以下デバック用 -->
+    <!-- 以下デバッグ用 -->
     <div id="debug">
-        <div id="senedItem">
+        <pre id="sendedItem">
             <!-- ここに送信されたJSONが表示される -->
-        </div>
+        </pre>
+    </div>
+    <!-- デバッグ用 -->
+    <div id="debug">
+        <h3>送信データ:</h3>
+        <div id="senedItem"></div>
+
+        <h3>リクエストステータス:</h3>
+        <div id="returnMessage"></div>
+
+        <h3>受信データ:</h3>
+        <div id="returnObj"><div>
     </div>
 
     <script>
-        function convertAndDisplayJSON() {
+        function convertAndSendJSON() {
             // 入力フォームからテキストを取得する
             const inputText = document.getElementById('inputSequenceForm').value;
 
-            // JSON形式に変換する
+            // 送信オブジェクト: JSON形式に変換する
             const jsonData = {
                 text: inputText,
-                config: {}
+                config: {
+                    check_duplication: true,
+                    age: "high school"
+                }
             };
 
-            // JSONを文字列に変換してhtml内デバック部分に表示する
+            // 送信するデータ(jsonData)をHTML内デバッグ部分に表示
             document.getElementById('senedItem').textContent = JSON.stringify(jsonData, null, 2);
+
+            // /send に入力テキストをJSONに加工して送信する
+            fetch('/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+                .then(response => response.json()) // レスポンスをJSONとして処理
+                .then(data => {
+                    console.log(data)
+                    
+                    // 受け取ったデータを表示する
+                    document.getElementById('returnObj').textContent = JSON.stringify(data, null, 2);
+
+                    // 成功メッセージを表示
+                    document.getElementById('returnMessage').textContent = '返ってきました！';
+                })
+                .catch(error => {
+                    // エラーメッセージを表示
+                    document.getElementById('returnMessage').textContent = '送信できなかったか、受信できませんでした。';
+                    console.error('返ってきませんでした！', error);
+                });
         }
     </script>
 </body>
+
+
 
 </html>

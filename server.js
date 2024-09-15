@@ -1,13 +1,34 @@
-const express = require('express');   // expressモジュールを読み込む
-const app = express();   // expressオブジェクトの作成
-const PORT = 3000;   // ポート番号の指定
+const express = require('express');
+const axios = require('axios');
 
+const app = express();
+const PORT = 3000;
 
-// "/"にGETでリクエストが飛んできたときに返す
+// JSONデータのパースを許可
+app.use(express.json());
+
+// フォームのデータを受け取るエンドポイント
+app.post('/send', (req, res) => {
+    const { text, config } = req.body;
+
+    // バック側のサーバにPOSTリクエスト
+    axios.post('http://127.0.0.1:5000/process_text', {
+        text: text,
+        config: config
+    })
+    .then(response => {
+        // 受け取ったデータをそのままクライアント側に返す
+        res.json(response.data);
+    })
+    .catch(error => {
+        res.status(500).send('can not sent');
+    });
+});
+
+// "/"にGETでリクエストが飛んできたとき、index.htmlを返す
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-// 3000番でサーバー起動
-// サーバー起動時にログを出力する
-app.listen(PORT, () => console.log('saver is running'))
+// サーバー起動
+app.listen(PORT, () => console.log(`Server is running: http://localhost:${PORT}`));
