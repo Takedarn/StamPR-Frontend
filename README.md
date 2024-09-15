@@ -21,6 +21,10 @@ nodejsをインストールするとnpmが使えるようになります。
 ```
 npm install express
 ```
+- axiosをインストールする
+```
+npm install axios
+```
 
 
 ### ローカルサーバでの立ちあげ 🐟
