@@ -45,15 +45,20 @@ button:hover {
 }
 
 #original-text {
-    white-space: pre-wrap;
+    white-space: pre-wrap; /* 元の改行を保持 */
+    line-height: 1.6; /* 行間の調整 */
 }
 
 .sentence {
-    margin-bottom: 20px;
-    padding: 10px;
+    display: inline; /* インライン表示に変更 */
     cursor: pointer;
-    position: relative;
-    /* 枠線を削除 */
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.sentence:hover {
+    background-color: #f0f0f0; /* ホバー時の視覚効果を追加 */
 }
 
 .comments {

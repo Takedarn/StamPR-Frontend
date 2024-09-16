@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            console.log(requestData)
+            console.log(requestData);
             // ダミーのURLにPOST（実際にはバックエンドのAPI URLに置き換える）
             const response = await fetch("http://localhost:5050/process_text", {
                 method: "POST",
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // レスポンスをJSON形式で受け取る
             const responseData = await response.json();
             
-            console.log(responseData)
+            console.log(responseData);
 
             // 校正結果の表示
             displayProofreadResult(responseData);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         originalTextDiv.innerHTML = ""; // 前回の結果をクリア
 
         data.sentences.forEach(sentence => {
-            const sentenceDiv = document.createElement("div");
+            const sentenceDiv = document.createElement("span"); // インライン表示に変更
             sentenceDiv.className = "sentence";
             let sentenceText = sentence.original_sentence;
 
