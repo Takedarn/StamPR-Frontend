@@ -64,32 +64,28 @@ document.addEventListener("DOMContentLoaded", () => {
             let sentenceText = sentence.original_sentence;
 
             // 提案がある場合、該当部分にハイライトを付ける
+            sentenceDiv.innerHTML = sentenceText;
+
+            // コメントをすべてまとめて表示するためのdivを作成
+            const commentsDiv = document.createElement("div");
+            commentsDiv.className = "comments";
+
             if (sentence.suggestions.length > 0) {
                 sentence.suggestions.forEach(suggestion => {
-                    const range = suggestion.range; // 構成の範囲
-                    const before = sentenceText.slice(0, range.start);
-                    const highlighted = sentenceText.slice(range.start, range.end);
-                    const after = sentenceText.slice(range.end);
-
-                    // マーカーを付ける
-                    sentenceDiv.innerHTML = `${before}<span class="highlight">${highlighted}</span>${after}`;
-
-                    // コメント表示のイベントを設定
-                    const highlightSpan = sentenceDiv.querySelector(".highlight");
                     const commentDiv = document.createElement("div");
                     commentDiv.className = "suggestion-comment";
                     commentDiv.textContent = suggestion.comment;
 
-                    highlightSpan.addEventListener("click", () => {
-                        // コメントの表示/非表示を切り替える
-                        commentDiv.classList.toggle("active");
-                    });
-
-                    sentenceDiv.appendChild(commentDiv);
+                    commentsDiv.appendChild(commentDiv);
                 });
-            } else {
-                sentenceDiv.textContent = sentenceText;
             }
+
+            sentenceDiv.appendChild(commentsDiv);
+
+            // クリックイベントでコメントを表示/非表示
+            sentenceDiv.addEventListener("click", () => {
+                commentsDiv.classList.toggle("active");
+            });
 
             originalTextDiv.appendChild(sentenceDiv);
         });
