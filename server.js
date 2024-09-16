@@ -11,21 +11,24 @@ app.use(express.json());
 app.post('/send', (req, res) => {
     const { text, config } = req.body;
 
-    console.log('Received data:', req.body); // デバッグ用
+    console.log('バック側に送信するデータ:', req.body); // デバッグ用：　後で消す. backend側に送信するデータの表示
 
-    // バック側のサーバにPOSTリクエスト
+    // backend側のサーバにPOSTリクエスト
+    // ---------- ここでbackend側にデータを投げる -----------------
     axios.post('http://127.0.0.1:5000/process_text', {
         text: text,
         config: config
     })
+    // backendからデータを受けとる
+    // 成功時の処理　:
     .then(response => {
-        console.log('Response from backend server:', response.data); // デバッグ用
-
-        // サーバからのレスポンスをそのままクライアントに返す
+        console.log('バック側からのレスポンス:', response.data); // デバッグ用：　後で消す
+        // backend側からのレスポンスをそのままクライアント側に返す
         res.json(response.data);
     })
+    // 失敗時の処理　:
     .catch(error => {
-        console.error('Error sending message:', error); // デバッグ用
+        console.error('Error sending message:', error); // デバッグ用：　後で消す
         res.status(500).send('Failed to send message');
     });
 });

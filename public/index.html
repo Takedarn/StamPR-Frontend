@@ -36,53 +36,53 @@
         <div id="returnMessage"></div>
 
         <h3>受信データ:</h3>
-        <div id="returnObj">
-            <div>
-            </div>
+        <div id="returnObj"><div>
+    </div>
 
-            <script>
-                function convertAndSendJSON() {
-                    // 入力フォームからテキストを取得する
-                    const inputText = document.getElementById('inputSequenceForm').value;
+    <script>
+        function convertAndSendJSON() {
+            // 入力フォームからテキストを取得する
+            const inputText = document.getElementById('inputSequenceForm').value;
 
-                    // 送信オブジェクト: JSON形式に変換する
-                    const jsonData = {
-                        text: inputText,
-                        config: {
-                            check_duplication: true,
-                            age: "high school"
-                        }
-                    };
-
-                    // 送信するデータ(jsonData)をHTML内デバッグ部分に表示
-                    document.getElementById('senedItem').textContent = JSON.stringify(jsonData, null, 2);
-
-                    // /send に入力テキストをJSONに加工して送信する
-                    fetch('/send', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(jsonData)
-                    })
-                        .then(response => response.text()) // レスポンスをJSONとして処理
-                        .then(data => {
-                            // 成功時:
-                            // デバッグ用にデータをコンソールに表示
-                            console.log(data);
-                            // 受け取ったデータを表示する
-                            document.getElementById('returnObj').textContent = JSON.stringify(data, null, 2);
-                            // 成功メッセージを表示
-                            document.getElementById('returnMessage').textContent = '返ってきました！';
-                        })
-                        .catch(error => {
-                            // 失敗時:
-                            // エラーメッセージを表示
-                            console.error('error:', error);
-                            document.getElementById('returnMessage').textContent = 'エラーが発生しました。';
-                        });
+            // 送信オブジェクト: JSON形式に変換する
+            const jsonData = {
+                text: inputText,
+                config: {
+                    check_duplication: true,
+                    age: "high school"
                 }
-            </script>
+            };
+
+            // 送信するデータ(jsonData)をHTML内デバッグ部分に表示
+            document.getElementById('senedItem').textContent = JSON.stringify(jsonData, null, 2);
+
+            // /send に入力テキストをJSONに加工して、backend側に送信する
+            fetch('/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+                // beckendからのレスポンスを受け取る
+                .then(response => response.text()) 
+                .then(data => { // 
+                    // 成功時:
+                    // デバッグ用に受け取ったデータをコンソールに表示
+                    console.log(data);
+                    // 受け取ったデータを表示する
+                    document.getElementById('returnObj').textContent = JSON.stringify(data, null, 2);
+                    // 成功メッセージを表示
+                    document.getElementById('returnMessage').textContent = '返ってきました！';
+                })
+                .catch(error => {
+                    // 失敗時:
+                    // エラーメッセージを表示
+                    console.error('error:', error);
+                    document.getElementById('returnMessage').textContent = 'エラーが発生しました。';
+                });
+        }
+    </script>
 </body>
 
 
