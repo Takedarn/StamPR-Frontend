@@ -29,6 +29,7 @@ npm install
 
 
 ```
+npm install http-server
 npm run start
 ```
 ターミナル内に、トーカルホストを示すURLが表示されるのでクリックしてアクセスしてください。
