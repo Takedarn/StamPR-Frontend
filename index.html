@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章校正アプリ</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/top.css">
 </head>
+
 <body>
+    <!-- トップ画面 -->
     <div id="topContainer">
         <header>
             <img id="appLogoImg" src="img/app_logo.svg" alt="app_logo">
@@ -16,10 +19,8 @@
             <textarea id="text-input" placeholder="ここに校正したい文章を入力..."></textarea>
         </main>
         <footer>
-            <div id="startKouseiBtn">
-                <div id="startKouseiContainer">
-                    <h3 id="startKouseititle">校正を始める</h3><img id="settings" src="img/settings.svg" alt="">
-                </div>
+            <div id="submit-button">
+                <h3 id="startKouseititle">校正を始める</h3><img id="settings" src="img/settings.svg" alt="">
             </div>
         </footer>
     </div>
@@ -29,6 +30,7 @@
         <div id="original-text"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/top.js"></script>
 </body>
+
 </html>

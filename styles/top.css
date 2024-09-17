@@ -1,13 +1,7 @@
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
 /* --------------------ヘッダーの設定-------------------- */
 #topContainer {
+    padding: 0 10px 0 10px;
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -15,6 +9,7 @@ body {
 }
 
 header {
+    background-color: transparent; /* 背景を透明に */; 
     height: 100px;
 }
 
@@ -27,20 +22,31 @@ header {
 /* --------------------メイン部分の設定-------------------- */
 
 main {
+
     flex: 1;
     display: flex;
     justify-content: center;
 }
 
 
+
 #text-input {
+    padding: 0 30px 0 30px;
     padding-top: 20px;
+    color: #727272;
     width: 100%;
     height: 100%;
-    text-align: center;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 600;
-    white-space: nowrap  
+    white-space: pre-wrap;
+    overflow-wrap: break-word; /* コンテンツが横幅を超えた際に折り返す */
+    text-align: left;
+    border: none;
+    caret-color: #2E933C; /* カーソルの色を青に変更 */
+}
+
+#text-input::-webkit-scrollbar {
+    display: none; /* スクロールバーを非表示に */
 }
 
 #text-input:focus::placeholder {
@@ -53,16 +59,9 @@ main {
 
 #text-input::placeholder {
     color: rgb(0, 0, 0, 0.16);
+    text-align: center; /* プレースホルダーのテキストは中央揃え */
 }
 
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    background-color: transparent;
-}
 
 
 /* --------------------フッターの設定-------------------- */
@@ -70,7 +69,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 100px;
 }
 
 #settings {
@@ -82,14 +81,20 @@ footer {
     font-size: 19px;
 }
 
-#startKouseiBtn {
+#submit-button {
     border-radius: 5px;
-    box-shadow: 0px 0px 17px -4px #c7c7c7;
+    box-shadow: 0px 0px 17px -7px #c7c7c7;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 370px;
     height: 46px;
+    transition: background-color 0.6s ease, color 0.6s ease; /* 背景色とフォント色を徐々に変化 */
+}
+
+#submit-button:hover {
+    color: white;
+    background-color: #2E933C;
 }
 
 #startKouseiContainer {
@@ -101,6 +106,14 @@ footer {
 #startKouseititle {
     font-size: 16px;
     color: #2E933C;
+}
+
+#submit-button:hover #startKouseititle {
+    color: white;
+}
+
+#submit-button:hover #settings {
+    content: url('../img/setting_white.svg');
 }
 
 button {
