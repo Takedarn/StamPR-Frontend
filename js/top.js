@@ -101,60 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // 結果表示を有効に
         resultDiv.style.display = "block";
     }
-
-
-    // // 校正結果を表示する関数
-    // function displayProofreadResult(data) {
-    //     originalTextDiv.innerHTML = ""; // 前回の結果をクリア
-
-    //     data.sentences.forEach(sentence => {
-    //         const sentenceDiv = document.createElement("span"); 
-    //         sentenceDiv.className = "sentence";
-    //         let sentenceText = sentence.original_sentence;
-
-    //         // 提案がある場合、該当部分にハイライトを付ける
-    //         sentenceDiv.innerHTML = sentenceText;
-
-    //         // コメントをすべてまとめて表示するためのdivを作成
-    //         const commentsDiv = document.createElement("div");
-    //         commentsDiv.className = "comments";
-
-    //         if (sentence.suggestions.length > 0) {
-    //             // 校正すべき内容が含まれている場合、黄色のマーカーを追加
-    //             sentenceDiv.style.backgroundColor = "yellow";
-
-    //             sentence.suggestions.forEach(suggestion => {
-    //                 const commentDiv = document.createElement("div");
-    //                 commentDiv.className = "suggestion-comment";
-    //                 commentDiv.textContent = suggestion.comment;
-
-    //                 commentsDiv.appendChild(commentDiv);
-    //             });
-    //         }
-
-    //         sentenceDiv.appendChild(commentsDiv);
-
-    //         // クリックイベントでコメントを表示/非表示
-    //         sentenceDiv.addEventListener("click", () => {
-    //                 commentsDiv.classList.toggle("active");
-                
-    //         });
-
-    //         originalTextDiv.appendChild(sentenceDiv);
-    //     });
-
-    //     // 結果表示を有効に
-    //     resultDiv.style.display = "block";
-    // }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    if ('serviceWorker' in navigator) {
-        // サービスワーカーを使用している場合、キャッシュ削除
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            for(let registration of registrations) {
-                registration.unregister();
-            }
-        });
-    }
+document.getElementById("appLogoImg").addEventListener("click", () => {
+    location.reload(); // ページをリロード
 });
