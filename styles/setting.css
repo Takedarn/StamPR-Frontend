@@ -1,26 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+body {
+    font-family: "Noto Sans JP", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
 /* --------------------校正設定-------------------- */
 #new-footer {
     width: 100%;
-    height: auto;
 }
 
 #test {
-    height: 100%;
     display: flex;
     justify-content: center;
 }
 
 #kouseisettingCard {
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    width: auto;
-    padding: 0 10px 10px 10px;
-    margin-bottom: 20p;
+    background-color: rgba(255, 0, 0, 0.078);
+    border-radius: 3px;
+    width: 97%; /* ビューポートの幅の90%に設定 */
+    max-width: 600px; /* 最大幅を設定 */
+    padding: 0 0px 10px 0px;
     height: 400px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     margin-bottom: 25px;
+    display: flex;
+    flex-direction: column; /* 縦方向にレイアウト */
+}
+
+#set-header {
+    color: #535353;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box; /* パディングを含むサイズ指定 */
+}
+
+#set-main {
+    flex: 1; /* 空きスペースを埋める */
+    overflow-y: auto; /* コンテンツが溢れた場合にスクロール可能にする */
+    padding: 0 15px 0  15px; /* 内側の余白を設定 */
+    box-sizing: border-box; /* パディングを含むサイズ指定 */
+}
+
+#set-footer {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box; /* パディングを含むサイズ指定 */
 }
 
 
@@ -38,4 +69,3 @@
 #startKouseiTitle2 {
     font-size: 16px;
 }
-

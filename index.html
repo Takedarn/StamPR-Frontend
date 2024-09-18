@@ -11,36 +11,43 @@
 </head>
 
 <body>
-<!-- トップ画面 -->
-<div id="topContainer">
-    <header>
-        <img id="appLogoImg" src="img/app_logo.svg" alt="app_logo">
-    </header>
-    <main>
-        <textarea id="text-input" placeholder="ここに校正したい文章を入力..."></textarea>
-    </main>
-    <footer id="original-footer">
-        <div id="submit-button">
-            <h3 id="startKouseititle">校正を始める</h3><img id="settings" src="img/settings.svg" alt="">
-        </div>
-    </footer>
-
-
-<!-- 校正設定画面 -->
-<footer id="new-footer" style="display: none;">
-    <div id="test">
-        <div id="kouseisettingCard">
-            <div id="new-submit-button">
-                <h2 id="startKouseiTitle2">校正をする</h2><img id="settings" src="img/rocket_white.svg" alt="">
+    <!-- トップ画面 -->
+    <div id="topContainer">
+        <header>
+            <img id="appLogoImg" src="img/app_logo.svg" alt="app_logo">
+        </header>
+        <main>
+            <textarea id="text-input" placeholder="ここに校正したい文章を入力..."></textarea>
+        </main>
+        <footer id="original-footer">
+            <div id="submit-button">
+                <h3 id="startKouseititle">校正を始める</h3><img id="settings" src="img/settings.svg" alt="">
             </div>
-        </div>
+        </footer>
+
+
+        <!-- 校正設定画面 -->
+        <footer id="new-footer" style="display: none;">
+            <div id="test">
+                <div id="kouseisettingCard">
+                    <div id="set-header">校正のオプション</div>
+                    <div id="set-main">
+                       
+                    </div>
+                    <div id="set-footer">
+                        <div id="new-submit-button">
+                            <h2 id="startKouseiTitle2">校正をする</h2><img id="settings" src="img/rocket_white.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
     </div>
-</footer>
-
-
-
-</div>
-<script src="js/top.js"></script>
+    <script src="js/top.js"></script>
 </body>
 
 </html>
