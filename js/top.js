@@ -106,3 +106,20 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("appLogoImg").addEventListener("click", () => {
     location.reload(); // ページをリロード
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const submitButton = document.getElementById("submit-button");
+    const originalFooter = document.getElementById("original-footer");
+    const newFooter = document.getElementById("new-footer");
+
+    // 校正を始めるボタンを押した時の処理
+    submitButton.addEventListener("click", () => {
+        // original-footer非表示
+        originalFooter.style.display = "none";
+        // new-footerを表示
+        newFooter.style.display = "block";
+    });
+});
+
+

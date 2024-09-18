@@ -1,0 +1,41 @@
+/* --------------------校正設定-------------------- */
+#new-footer {
+    width: 100%;
+    height: auto;
+}
+
+#test {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#kouseisettingCard {
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: auto;
+    padding: 0 10px 10px 10px;
+    margin-bottom: 20p;
+    height: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 25px;
+}
+
+
+#new-submit-button {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 370px;
+    height: 46px;
+    background-color: #2E933C;
+}
+
+#startKouseiTitle2 {
+    font-size: 16px;
+}
+

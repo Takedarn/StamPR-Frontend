@@ -10,7 +10,7 @@
 
 header {
     background-color: transparent; /* 背景を透明に */; 
-    height: 100px;
+    height: 80px;
 }
 
 #appLogoImg {
@@ -65,11 +65,12 @@ main {
 
 
 /* --------------------フッターの設定-------------------- */
-footer {
+/* --------------------トップページ-------------------- */
+#original-footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 120px;
 }
 
 #settings {
@@ -183,3 +184,4 @@ button:hover {
     margin-top: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
