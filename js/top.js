@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingDiv.style.display = "block";
         resultDiv.style.display = "none";
 
-        // バック側にに送信するデータ
+        // バック側に送信するデータ
         const requestData = {   
             text: text,
             configs: {
@@ -107,11 +107,11 @@ document.getElementById("appLogoImg").addEventListener("click", () => {
     location.reload(); // ページをリロード
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("submit-button");
     const originalFooter = document.getElementById("original-footer");
     const newFooter = document.getElementById("new-footer");
+    const backtoTopButton = document.getElementById("backtotop");
 
     // 校正を始めるボタンを押した時の処理
     submitButton.addEventListener("click", () => {
@@ -119,7 +119,17 @@ document.addEventListener("DOMContentLoaded", () => {
         originalFooter.style.display = "none";
         // new-footerを表示
         newFooter.style.display = "block";
-    });
+    });    
+
+    // 校正へ戻るボタンを押した時の処理
+    backtoTopButton.addEventListener("click", () => {
+        // new-footerを非表示
+        newFooter.style.display = "none";
+        // original-footer表示
+        originalFooter.style.display = 'flex';
+        originalFooter.style.justifyContent = 'center';
+        originalFooter.style.alignItems = 'center'; 
+    });   
 });
 
 

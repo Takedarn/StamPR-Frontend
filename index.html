@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <!-- トップ画面 -->
     <div id="topContainer">
         <header>
@@ -30,9 +31,23 @@
         <footer id="new-footer" style="display: none;">
             <div id="test">
                 <div id="kouseisettingCard">
-                    <div id="set-header">校正のオプション</div>
+                    <div id="set-header">
+                        <h5></h5>
+                        <h5></h5>
+                        <h5></h5>
+                        <h5></h5>
+                        <h5></h5>
+                        <h5></h5>
+                        <h3>オプション</h3>
+                        <h5></h5>
+                        <h5></h5>
+                        <h5></h5>
+                        <h5></h5>
+                        <img id="backtotop" src="img/cancel.svg" alt="">
+                    </div>
                     <div id="set-main">
-                       
+                        <input type="checkbox" id="scales" name="scales" checked />
+                        <label for="scales">漢字を開く</label>
                     </div>
                     <div id="set-footer">
                         <div id="new-submit-button">
@@ -43,9 +58,10 @@
             </div>
         </footer>
 
+        <!-- ローディング画面 -->
+        <div id="loading" style="display: none;">
 
-
-
+        </div> 
     </div>
     <script src="js/top.js"></script>
 </body>
