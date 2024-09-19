@@ -1,89 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
-
-body {
-    font-family: "Noto Sans JP", system-ui;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-}
-
-/* --------------------校正設定-------------------- */
-#new-footer {
+#newFooter {
+    margin-right: 10px;
     width: 100%;
+    height: 500px;
+    background-color: red;
+    display: flex;
+    
 }
 
-#test {
+#newFooterContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
 }
 
-#kouseisettingCard {
-    z-index: 100;
-    border-radius: 6px;
-    width: 100%; /* ビューポートの幅の90%に設定 */
-    max-width: 550px; /* 最大幅を設定 */
-    padding: 0 0px 10px 0px;
-    height: 600px;
-    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.10);
-    margin-bottom: 25px;
+#option {
+    background-color: yellow;
     display: flex;
-    flex-direction: column; /* 縦方向にレイアウト */
+    flex-direction: column;
+    width: 95%;
+    height: 95%;
 }
 
-#set-header {
+#optionHeader {
+    background-color: rgba(255, 0, 0, 0.197);
     height: 50px;
-    display: flex;
-    justify-content: space-between;
-    color: #535353;
-    padding: 20px 0 10px 0;
-    width: 100%;
-    box-sizing: border-box; /* パディングを含むサイズ指定 */
 }
 
-#backtotop {
-    padding-right: 25px;
+#optionMain {
+    flex: 1;
+    background-color: rgba(0, 191, 35, 0.197);
 }
 
-
-#backtotop {
-    height: 30px;
+#optionFooter {
+    height: 60px;  
+    background-color: rgba(255, 0, 0, 0.197);
 }
 
-#set-main {
-    flex: 1; /* 空きスペースを埋める */
-    overflow-y: auto; /* コンテンツが溢れた場合にスクロール可能にする */
-    padding: 0 15px 0  15px; /* 内側の余白を設定 */
-    box-sizing: border-box; /* パディングを含むサイズ指定 */
+#runKouseirocket {
+    margin-left: 10px;
+    width: 17px;
 }
 
-#set-footer {
-    padding-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box; /* パディングを含むサイズ指定 */
-}
-
-
-#new-submit-button {
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#runkouseiButton {
     border-radius: 5px;
-    width: 370px;
+    width: 366px;
     height: 46px;
-    background-color: #2E933C;
+    background-color: #2e933c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
-#new-submit-button:hover {
-    transition: background-color 0.6s ease; /* 色の変化を0.3秒かけて実行 */
-    background-color: #2c8137;
+#runKouseiButtonContainer {
+    display: flex;
+    justify-content: center;
 }
 
-#startKouseiTitle2 {
+#runKouseiButtonContent {
+    display: flex;
+}
+
+#runKouseiButtonContent h3 {
     font-size: 16px;
+    color: #fff;
+}
+
+#optionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#backtotop {
+    width: 23px;
 }
