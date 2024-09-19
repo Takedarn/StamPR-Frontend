@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // バック側に送信するデータを作成
         const requestData = {   
-            ext: text,
+            text: text,
             configs: {
              open_kanji: openKanji
              }
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("エラーが発生しました:", error);
         } finally {
             // ローディング表示を非表示
-            loadingDiv.style.display = "none";
+            loadingPage.style.display = "none";
         }
     });
 
