@@ -34,10 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             // バック側のサーバにPOSTする
             // 内容：文章, 校正の設定
-            const response = await fetch("http://localhost:5050/process_text", {
+            const response = await fetch("http://kousei-ai-backend-env.eba-bk5iirvs.ap-northeast-1.elasticbeanstalk.com/process_text", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json", 
+                    "Access-Control-Allow-Origin": "*"
                 },
                 body: JSON.stringify(requestData)
             });
