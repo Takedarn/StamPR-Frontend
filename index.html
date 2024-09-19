@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KouseiAI</title>
+    <title>StamPR</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles/top.css">
     <link rel="stylesheet" href="styles/setting.css">
+    <link rel="stylesheet" href="styles/loading.css">
 </head>
 
 <body>
@@ -46,7 +47,7 @@
                         <img id="backtotop" src="img/cancel.svg" alt="">
                     </div>
                     <div id="set-main">
-                        <input type="checkbox" id="scales" name="scales" checked />
+                        <input type="checkbox" id="config-open-kanji" name="scales" checked />
                         <label for="scales">漢字を開く</label>
                     </div>
                     <div id="set-footer">
@@ -57,12 +58,16 @@
                 </div>
             </div>
         </footer>
-
-        <!-- ローディング画面 -->
-        <div id="loading" style="display: none;">
-
-        </div> 
     </div>
+    <!-- ローディング画面 -->
+    <div id="loading" style="display: none;">
+        <div id="loadingContainer">
+            <div id="loadingNowCard">
+                <img id="loadingNow" src="img/graph_logo.png" alt="">
+            </div>
+        </div>
+    </div> 
+    
     <script src="js/top.js"></script>
 </body>
 
