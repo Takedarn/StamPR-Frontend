@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultPage = document.getElementById("result"); // 校正結果表示ページ
     const originalTextDiv = document.getElementById("original-text"); // 校正前の文章
     const topContainer = document.getElementById("topContainer"); // 文章入力画面と校正設定画面のセット
+    const deleteInput = document.getElementById("footerBottomTitle"); // 結果表示画面の入力取り消しボタン
 
     // ”校正を送信”するボタンを押した時の処理
     submitButton.addEventListener("click", async () => {
@@ -104,8 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // // 結果表示を有効に
         // resultPage.style.display = "block";
+
+        // 結果表示画面の”入力取り消しボタン”をクリックするとページをリロードする
+        // document.getElementById("deleteInput").addEventListener("click", () => {
+        //     location.reload(); 
+        // });
     }
 });
+
 
 
 // トップ画面のロゴ画像をクリックするとページをリロードする
@@ -116,10 +123,10 @@ document.getElementById("appLogoImg").addEventListener("click", () => {
 
 // 校正を始めるときの処理
 document.addEventListener("DOMContentLoaded", () => {
-    const submitButton = document.getElementById("submit-button");
-    const originalFooter = document.getElementById("original-footer");
-    const newFooter = document.getElementById("new-footer");
-    const backtoTopButton = document.getElementById("backtotop");
+    const submitButton = document.getElementById("submit-button"); // "校正を始める"ボタン
+    const originalFooter = document.getElementById("original-footer"); // 校正を始めるボタンのフッター
+    const newFooter = document.getElementById("newFooter"); //　校正をするときのオプションをきめるフッター
+    const backtoTopButton = document.getElementById("backtotop"); // オプション画面から元の画面に戻るためのキャンセルボタン
 
     // 校正を始めるボタンを押した時の処理
     submitButton.addEventListener("click", () => {

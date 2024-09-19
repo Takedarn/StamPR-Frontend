@@ -1,11 +1,17 @@
 
 /* --------------------ヘッダーの設定-------------------- */
 #topContainer {
-    padding: 0 10px 0 10px;
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+}
+
+#topTest {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
 
 header {
@@ -20,9 +26,7 @@ header {
 }
 
 /* --------------------メイン部分の設定-------------------- */
-
 main {
-
     flex: 1;
     display: flex;
     justify-content: center;
@@ -65,13 +69,6 @@ main {
 
 
 /* --------------------フッターの設定-------------------- */
-#original-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 120px;
-}
-
 #settings {
     height: 18px;
     padding-left: 5px;
@@ -82,12 +79,13 @@ main {
 }
 
 #submit-button {
+    margin-bottom: 25px;
     border-radius: 5px;
     box-shadow: 0px 0px 17px -7px #565656;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 370px;
+    width: 366px;
     height: 46px;
     transition: background-color 0.6s ease, color 0.6s ease; /* 背景色とフォント色を徐々に変化 */
 }
@@ -97,10 +95,18 @@ main {
     background-color: #2E933C;
 }
 
-#startKouseiContainer {
+#original-footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 90px;
+}
+
+#origina-fotterContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 #startKouseititle {
@@ -116,57 +122,7 @@ main {
     content: url('../img/setting_white.svg');
 }
 
-
-#original-text {
-    white-space: pre-wrap;
-    /* 元の改行を保持 */
-    line-height: 1.6;
-    /* 行間の調整 */
-    position: relative;
+#origina-fotterContainer {
+    display: flex;
+    justify-content: center;
 }
-
-.sentence {
-    display: inline;
-    /* インライン表示に変更 */
-    position: relative;
-    /* コメントを文に相対的に配置 */
-    cursor: pointer;
-    margin-right: 10px;
-    /* 文章の右側にスペースを確保 */
-    padding: 5px;
-    border-radius: 4px;
-}
-
-.sentence:hover {
-    background-color: #f0f0f0;
-    /* ホバー時の視覚効果を追加 */
-}
-
-.comments {
-    display: none;
-    float: right;
-    position: absolute;/* コメントを文に対して絶対位置に配置 */
-    right: 0;/* 右側に表示 */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    max-width: 300px;
-    margin-left: 10px;/* 文から少し離す */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;/* コメントを最前面に表示 */
-    white-space: normal;/* コメント内の改行は保持 */
-}
-
-.comments.active {
-    display: block;
-}
-
-.suggestion-comment {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    max-width: 300px;
-    margin-top: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
