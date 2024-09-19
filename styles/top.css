@@ -15,7 +15,7 @@ header {
 
 #appLogoImg {
     padding: 20px 0 0 10px;
-    height: 70px;
+    height: 60px;
     width: auto;
 }
 
@@ -65,7 +65,6 @@ main {
 
 
 /* --------------------フッターの設定-------------------- */
-/* --------------------トップページ-------------------- */
 #original-footer {
     display: flex;
     justify-content: center;
@@ -117,20 +116,6 @@ main {
     content: url('../img/setting_white.svg');
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
 
 #original-text {
     white-space: pre-wrap;

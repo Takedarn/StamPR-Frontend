@@ -1,35 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const submitButton = document.getElementById("submit-button");
-    const textInput = document.getElementById("text-input");
-    const openKanjiCheckbox = document.getElementById("config-open-kanji");
-    const loadingDiv = document.getElementById("loading");
-    const resultDiv = document.getElementById("result");
-    const originalTextDiv = document.getElementById("original-text");
+    const submitButton = document.getElementById("new-submit-button"); // "校正する"ボタン
+    const textInput = document.getElementById("text-input"); // 入力する文章の全取得
+    const openKanjiCheckbox = document.getElementById("config-open-kanji"); // "漢字をひらく"チェックボックスがONかどうか
+    const loadingPage = document.getElementById("loading"); // ローディング画面
+    const resultDiv = document.getElementById("result"); // 校正結果表示ページ
+    const originalTextDiv = document.getElementById("original-text"); // 校正前の文章
+    const topContainer = document.getElementById("topContainer"); // 文章入力画面と校正設定画面のセット
 
     // ”校正を送信”するボタンを押した時の処理
     submitButton.addEventListener("click", async () => {
-        const text = textInput.value; // 送信する文章本体
+        const text = textInput.value; // 送信する文章本体\
         const openKanji = openKanjiCheckbox.checked; // 校正の設定
 
+        
         if (text.trim() === "") { // フォームが空かどうかのチェック
             alert("文章を入力してください");
-            return;
+          return;
         }
 
         // ローディング表示
-        loadingDiv.style.display = "block";
-        resultDiv.style.display = "none";
+        topContainer.style.display = "none"; // 文章入力画面と校正設定画面のセットを非表示する
+        loadingPage.style.display = "block"; // ローディング画面を表示させる
+        
 
-        // バック側にに送信するデータ
+        // バック側に送信するデータを作成
         const requestData = {   
             text: text,
             configs: {
-                open_kanji: openKanji
-            }
+             open_kanji: openKanji
+             }
         };
 
         try {
-            console.log(requestData);
             // バック側のサーバにPOSTする
             // 内容：文章, 校正の設定
             const response = await fetch("http://localhost:5050/process_text", {
@@ -40,19 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(requestData)
             });
 
-            // レスポンスをJSON形式で受け取る
-            const responseData = await response.json();
-            
-            console.log(responseData);
+        // レスポンスをJSON形式で受け取る
+        const responseData = await response.json();
+        console.log(responseData); // レスポンスをコンソールに表示
 
-            // 校正結果の表示
-            displayProofreadResult(responseData);
+        // // 校正結果の表示
+        // displayProofreadResult(responseData);
 
         } catch (error) {
             console.error("エラーが発生しました:", error);
         } finally {
             // ローディング表示を非表示
-            loadingDiv.style.display = "none";
+            loadingPage.style.display = "none";
         }
     });
 
@@ -103,15 +104,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+// トップ画面のロゴ画像をクリックするとページをリロードする
 document.getElementById("appLogoImg").addEventListener("click", () => {
-    location.reload(); // ページをリロード
+    location.reload(); 
 });
 
 
+// 校正を始めるときの処理
 document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("submit-button");
     const originalFooter = document.getElementById("original-footer");
     const newFooter = document.getElementById("new-footer");
+    const backtoTopButton = document.getElementById("backtotop");
 
     // 校正を始めるボタンを押した時の処理
     submitButton.addEventListener("click", () => {
@@ -119,7 +124,17 @@ document.addEventListener("DOMContentLoaded", () => {
         originalFooter.style.display = "none";
         // new-footerを表示
         newFooter.style.display = "block";
-    });
+    });    
+
+    // 校正へ戻るボタン(xボタン)を押した時の処理
+    backtoTopButton.addEventListener("click", () => {
+        // new-footerを非表示
+        newFooter.style.display = "none";
+        // original-footer表示
+        originalFooter.style.display = 'flex';
+        originalFooter.style.justifyContent = 'center';
+        originalFooter.style.alignItems = 'center'; 
+    });   
 });
 
 
