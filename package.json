@@ -1,12 +1,14 @@
 {
-  "name": "proofread-app",
+  "name": "kousei-ai-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "http-server -p 8080"
+    "start": "http-server -p 8080",
+    "build": "npm run build"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
   }
 }
+
