@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="styles/top.css">
     <link rel="stylesheet" href="styles/setting.css">
     <link rel="stylesheet" href="styles/loading.css">
+    <link rel="stylesheet" href="styles/result.css">
 </head>
 
 <body>
-
     <!-- トップ画面 -->
-    <div id="topContainer">
+    <div id="topContainer" style="display: block;">
         <header>
             <img id="appLogoImg" src="img/app_logo.svg" alt="app_logo">
         </header>
@@ -59,15 +59,83 @@
             </div>
         </footer>
     </div>
-    <!-- ローディング画面 -->
+
+
+    <!---------------- ローディング画面 ---------------->
     <div id="loading" style="display: none;">
         <div id="loadingContainer">
             <div id="loadingNowCard">
                 <img id="loadingNow" src="img/graph_logo.png" alt="">
             </div>
         </div>
-    </div>  
-    
+    </div>
+
+
+    <!---------------- 結果表示画面 ----------------->
+    <div id="result" style="display: none">
+        <div id="resultContainer">
+            <div id="resultTest">
+                <div id="resultHeader">
+                    <img id="reultFooterImg" src="img/app_logo.svg" alt="">
+                </div>
+                <div id="resultMain">
+                    <h2>ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+                        ああああああああああああああ
+
+                    </h2>
+                </div>
+                <div id="resultFotterContainer">
+                    <div id="resultFooter">
+                        <div id="resultFooterContentContainer">
+                            <div id="footerTop">
+                                <div id="fotterTopContainer">
+                                    <h3 id="fotterMainTitle">この文書内で3つの指摘箇所が見つかりました!</h3>
+                                    <h4 id="fotterMainSubtitle">ハイライトされている文をクリックすると指摘内容が見られます。</h4>
+                                </div>
+                            </div>
+                            <div id="footerBottom">
+                                <button id="footerBottomTitle" class="favorite styled" type="button">入力文を取り消す</button>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/top.js"></script>
 </body>
 

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const textInput = document.getElementById("text-input"); // 入力する文章の全取得
     const openKanjiCheckbox = document.getElementById("config-open-kanji"); // "漢字をひらく"チェックボックスがONかどうか
     const loadingPage = document.getElementById("loading"); // ローディング画面
-    const resultDiv = document.getElementById("result"); // 校正結果表示ページ
+    const resultPage = document.getElementById("result"); // 校正結果表示ページ
     const originalTextDiv = document.getElementById("original-text"); // 校正前の文章
     const topContainer = document.getElementById("topContainer"); // 文章入力画面と校正設定画面のセット
 
@@ -44,63 +44,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // レスポンスをJSON形式で受け取る
         const responseData = await response.json();
-        console.log(responseData); // レスポンスをコンソールに表示
+        // console.log(responseData); // レスポンスをコンソールに表示
 
         // // 校正結果の表示
-        // displayProofreadResult(responseData);
+        displayProofreadResult(responseData);
 
         } catch (error) {
             console.error("エラーが発生しました:", error);
         } finally {
             // ローディング表示を非表示
             loadingPage.style.display = "none";
+            // 結果表示表示を非表示
+            resultPage.style.display = "block";
         }
     });
 
     // 校正結果を表示する関数
     function displayProofreadResult(data) {
-        originalTextDiv.innerHTML = ""; // 前回の結果をクリア
+        console.log(data)
 
-        data.sentences.forEach(sentence => {
-            const sentenceDiv = document.createElement("span"); 
-            sentenceDiv.className = "sentence";
-            let sentenceText = sentence.original_sentence;
+        // dataの中の各インデックスに対して1つずつ取り出して処理する
+        // data.sentences.forEach(sentence => {
+        //     const pieaceOfSentence = document.createElement("span"); // spanタグを作成する 
+        //     pieaceOfSentence.className = "sentence"; // 作成したspanタグにclass="sentence"を付与
+        //     let sentenceText = sentence.original_sentence;
 
-            // 提案がある場合、該当部分にハイライトを付ける
-            sentenceDiv.innerHTML = sentenceText;
+        //     // 提案がある場合、該当部分にハイライトを付ける
+        //     sentenceDiv.innerHTML = sentenceText;
 
-            // コメントをすべてまとめて表示するためのdivを作成
-            const commentsDiv = document.createElement("div");
-            commentsDiv.className = "comments";
+        //     // コメントをすべてまとめて表示するためのdivを作成
+        //     const commentsDiv = document.createElement("div");
+        //     commentsDiv.className = "comments";
 
-            if (sentence.suggestions.length > 0) {
-                // 校正すべき内容が含まれている場合、黄色のマーカーを追加
-                sentenceDiv.style.backgroundColor = "yellow";
+        //     if (sentence.suggestions.length > 0) {
+        //         // 校正すべき内容が含まれている場合、黄色のマーカーを追加
+        //         sentenceDiv.style.backgroundColor = "yellow";
 
-                sentence.suggestions.forEach(suggestion => {
-                    const commentDiv = document.createElement("div");
-                    commentDiv.className = "suggestion-comment";
-                    commentDiv.textContent = suggestion.comment;
+        //         sentence.suggestions.forEach(suggestion => {
+        //             const commentDiv = document.createElement("div");
+        //             commentDiv.className = "suggestion-comment";
+        //             commentDiv.textContent = suggestion.comment;
 
-                    commentsDiv.appendChild(commentDiv);
-                });
+        //             commentsDiv.appendChild(commentDiv);
+        //         });
 
-                // クリックイベントでコメントを表示/非表示
-                sentenceDiv.addEventListener("click", () => {
-                    commentsDiv.classList.toggle("active");
-                });
+        //         // クリックイベントでコメントを表示/非表示
+        //         sentenceDiv.addEventListener("click", () => {
+        //             commentsDiv.classList.toggle("active");
+        //         });
 
-            } else {
-                // 提案がない場合はクリック不可に
-                sentenceDiv.style.pointerEvents = "none"; // クリックを無効化
-            }
+        //     } else {
+        //         // 提案がない場合はクリック不可に
+        //         sentenceDiv.style.pointerEvents = "none"; // クリックを無効化
+        //     }
 
-            sentenceDiv.appendChild(commentsDiv);
-            originalTextDiv.appendChild(sentenceDiv);
-        });
+        //     sentenceDiv.appendChild(commentsDiv);
+        //     originalTextDiv.appendChild(sentenceDiv);
+        // });
 
-        // 結果表示を有効に
-        resultDiv.style.display = "block";
+        // // 結果表示を有効に
+        // resultPage.style.display = "block";
     }
 });
 
