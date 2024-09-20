@@ -9,7 +9,6 @@ body {
 
 html, body {
     height: 100%;
-    overflow: hidden; /* 全体のスクロールを無効化 */
 }
 
 #resultTest {
@@ -78,7 +77,7 @@ html, body {
 
 #resultFooter {
     border-radius: 15px;
-    box-shadow: 0px 0px 17px -7px #000000;
+    box-shadow: 0px 0px 17px -7px #565656;
     position: fixed;
     bottom: 0;
     margin: 15px;

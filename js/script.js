@@ -32,21 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //topContainerを非表示にさせる
         topContainer.style.display = "none"; // 文章入力画面と校正設定画面のセットを非表示する
         // ローディング画面を表示させる
-        // 3秒間繰り返し処理を実行し、次の処理に移行しないようにする
-        await new Promise((resolve) => {
-            const intervalTime = 100; // 繰り返す間隔（ミリ秒）
-            let elapsedTime = 0;
-
-            const interval = setInterval(() => {
-                loadingPage.style.display = "block"; // ローディング画面を表示
-                elapsedTime += intervalTime;
-
-                if (elapsedTime >= 1500) { // 1.5秒経過したら終了
-                    clearInterval(interval);
-                    resolve(); // 1,5秒経過後に次の処理を実行
-                }
-            }, intervalTime);
-        });
+        loadingPage.style.display = "block"; // ローディング画面を表示
 
         
         // バック側に送信するデータを作成
@@ -89,15 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 校正結果を表示する関数
     function displayProofreadResult(data) {
-        console.log(data)
+        // console.log(data)
 
         let cnt = 0;
         let cntSuggestion = 0;
 
         //dataの中の各インデックスに対して1つずつ取り出して処理する
         data.sentences.forEach(d => {
-            console.log(d);
-            
+            // console.log(d);
 
             let sentenceText = d.original_sentence;
             let suggestions = d.suggestions;
@@ -121,13 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 ele.style.color = "#2E933C";
                 cntSuggestion += 1;   
             } 
-
-            
             cnt += 1;
         });
 
 
-        // 結果表示を有効に
+        // 結果表示を有効にする
         resultPage.style.display = "block";
 
         if (cntSuggestion === 0) {
@@ -144,7 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ele1 = textElementList[i];
             ele1.addEventListener('click', function() {
 
+
+                // 指摘箇所表示カードの非表示
                 resultFooterContainer.style.display = "none";
+                // コメント詳細カードカードの表示
                 commentCardContainer.style.display = "block";
 
                 // ele.remove();
@@ -152,37 +138,42 @@ document.addEventListener("DOMContentLoaded", () => {
                     ele2 = textElementList[j];
                     if (i === j) {
                         ele2.style.color = "#2E933C"; // primary colorにする
-                        
                     } else {
                         ele2.style.color = "#E8E9EB"; // 薄いグレー
                     }
                 }
-                console.log(suggestionList[i]);
 
                 commentMain.innerHTML = ``
 
-                for(let j = 0; j < suggestionList[i].length; j++) {
-                    // console.log(j + 1)
-                    // console.log(suggestionList[i][j].title);
-                    // console.log(suggestionList[i][j].comment);
 
+                for(let j = 0; j < suggestionList[i].length; j++) {
+                    // クリックした文のindex, title, commnetを取得
+                    // indexを取得
                     let indexElement = document.createElement('div');
+                    indexElement.classList.add("index");
                     indexElement.innerHTML = j + 1;
 
+                    // titleを取得
                     let titleElement = document.createElement('div');
+                    titleElement.classList.add("title");
                     titleElement.innerHTML = suggestionList[i][j].title;
 
+                    // commentを取得
                     let commentElement = document.createElement('div');
+                    commentElement.classList.add("comment");
                     commentElement.innerHTML = suggestionList[i][j].comment;
 
+                    // 取得した↑を入れるためのコンテナを宣言
                     let suggestionContainer = document.createElement('div');
-                    suggestionContainer.innerHTML = indexElement.innerHTML + 
-                                                    titleElement.innerHTML + 
-                                                    commentElement.innerHTML;
+                    suggestionContainer.classList.add("suggestionContainer");
 
+                    // コンテナに格納
+                    suggestionContainer.appendChild(indexElement);
+                    suggestionContainer.appendChild(titleElement);
+                    suggestionContainer.appendChild(commentElement);
+
+                    // コンテナをhtmlにぶち込む
                     commentMain.appendChild(suggestionContainer);
-
-    
                 } 
             });
         }
@@ -238,5 +229,3 @@ document.addEventListener("DOMContentLoaded", () => {
         originalFooter.style.alignItems = 'center'; 
     });   
 });
-
-

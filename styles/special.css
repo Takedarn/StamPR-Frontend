@@ -1,0 +1,35 @@
+
+
+.suggestionContainer {
+    padding: 20px 20px 20px 20px;
+    height: auto;
+    align-items: center;
+}
+
+.index {
+    margin: 0 0 5px 5px;
+    background-color: green;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.title {
+    margin: 0 0 5px 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4d4d4d;
+}
+
+.comment {
+    margin: 0 0 0 0;
+    margin-left: 10px;
+    font-size: 13px;
+    color: #999;
+}
