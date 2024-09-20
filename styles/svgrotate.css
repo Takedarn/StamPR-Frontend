@@ -1,0 +1,14 @@
+/* 画像を回転させるアニメーション */
+@keyframes floating-y {
+    0% {
+      transform: translateY(-10%);
+    }
+    100% {
+      transform: translateY(10%);
+    }
+}
+
+#loadingNow {
+    /* 上下にフワフワ */
+    animation: floating-y 1.8s ease-in-out infinite alternate-reverse
+}

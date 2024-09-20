@@ -144,18 +144,18 @@ html, body {
 
 #footerBottomTitle:hover {
     height: 31px;
-    width: 120px;
+    width: 110px;
     color: white;
-    font-size: 12px;
+    font-size: 11px;
     border-radius: 5px;
     background-color: #277f33;
 }
 
 #footerBottomTitle:focus {
     height: 31px;
-    width: 120px;
+    width: 110px;
     color: white;
-    font-size: 12px;
+    font-size: 11px;
     border-radius: 5px;
     background-color: #277f33;
 }
