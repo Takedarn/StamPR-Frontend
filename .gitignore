@@ -20,4 +20,4 @@ benchmarks/graphs
 # https://git-scm.com/docs/gitignore
 
 # ほかのファイル
-個人的メモ.txt
+.commit_templete

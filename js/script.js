@@ -124,61 +124,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         for (let i = 0; i < textElementList.length; i++) {
-            ele1 = textElementList[i];
-            ele1.addEventListener('click', function() {
+            let ele1 = textElementList[i];
 
+            // 校正すべき内容がある場合のみクリックイベントを追加
+            if (suggestionList[i].length > 0) {
+                ele1.addEventListener('click', function() {
+                    // 指摘箇所表示カードの非表示
+                    resultFooterContainer.style.display = "none";
+                    // コメント詳細カードカードの表示
+                    commentCardContainer.style.display = "block";
 
-                // 指摘箇所表示カードの非表示
-                resultFooterContainer.style.display = "none";
-                // コメント詳細カードカードの表示
-                commentCardContainer.style.display = "block";
-
-                // ele.remove();
-                for (let j = 0; j < textElementList.length; j++) {
-                    ele2 = textElementList[j];
-                    if (i === j) {
-                        ele2.style.color = "#2E933C"; // primary colorにする
-                    } else {
-                        ele2.style.color = "#E8E9EB"; // 薄いグレー
+                    // ele.remove();
+                    for (let j = 0; j < textElementList.length; j++) {
+                        let ele2 = textElementList[j];
+                        if (i === j) {
+                            ele2.style.color = "#2E933C"; // primary colorにする
+                        } else {
+                            ele2.style.color = "#E8E9EB"; // 薄いグレー
+                        }
                     }
-                }
 
-                commentMain.innerHTML = ``
+                    commentMain.innerHTML = ``
 
+                    for(let j = 0; j < suggestionList[i].length; j++) {
+                        // クリックした文のindex, title, commnetを取得
+                        let indexElement = document.createElement('div');
+                        indexElement.classList.add("index");
+                        indexElement.innerHTML = j + 1;
 
-                for(let j = 0; j < suggestionList[i].length; j++) {
-                    // クリックした文のindex, title, commnetを取得
-                    // indexを取得
-                    let indexElement = document.createElement('div');
-                    indexElement.classList.add("index");
-                    indexElement.innerHTML = j + 1;
+                        let titleElement = document.createElement('div');
+                        titleElement.classList.add("title");
+                        titleElement.innerHTML = suggestionList[i][j].title;
 
-                    // titleを取得
-                    let titleElement = document.createElement('div');
-                    titleElement.classList.add("title");
-                    titleElement.innerHTML = suggestionList[i][j].title;
+                        let commentElement = document.createElement('div');
+                        commentElement.classList.add("comment");
+                        commentElement.innerHTML = suggestionList[i][j].comment;
 
-                    // commentを取得
-                    let commentElement = document.createElement('div');
-                    commentElement.classList.add("comment");
-                    commentElement.innerHTML = suggestionList[i][j].comment;
+                        let suggestionContainer = document.createElement('div');
+                        suggestionContainer.classList.add("suggestionContainer");
 
-                    // 取得した↑を入れるためのコンテナを宣言
-                    let suggestionContainer = document.createElement('div');
-                    suggestionContainer.classList.add("suggestionContainer");
+                        suggestionContainer.appendChild(indexElement);
+                        suggestionContainer.appendChild(titleElement);
+                        suggestionContainer.appendChild(commentElement);
 
-                    // コンテナに格納
-                    suggestionContainer.appendChild(indexElement);
-                    suggestionContainer.appendChild(titleElement);
-                    suggestionContainer.appendChild(commentElement);
-
-                    // コンテナをhtmlにぶち込む
-                    commentMain.appendChild(suggestionContainer);
-                } 
-            });
+                        commentMain.appendChild(suggestionContainer);
+                    } 
+                });
+            }
         }
-    } 
+    }
 });
+
+// 詳細の指摘取消をクリックすると詳細カードを消して指摘箇所カードを表示する
+document.getElementById("commnetHeaderCancel").addEventListener("click", () => {
+    // 指摘詳細カードの非表示
+    const commentCardContainer = document.getElementById("commentCardContainer");
+    commentCardContainer.style.display = "none";
+    
+    // 指摘回数表示カードの表示
+    const resultFooterContainer = document.getElementById("resultFooterContainer");
+    resultFooterContainer.style.display = "block";
+    
+    // 文ごとの色をリセットする処理
+    for (let i = 0; i < textElementList.length; i++) {
+        let ele = textElementList[i];
+        // 校正すべき内容がある文は緑色、ない文は黒色に戻す
+        if (suggestionList[i].length > 0) {
+            ele.style.color = "#2E933C"; // 緑色
+        } else {
+            ele.style.color = "#000000"; // 黒色
+        }
+    }
+});
+
 
 
 
