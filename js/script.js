@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("runkouseiButton"); // "校正する"ボタン
     const textInput = document.getElementById("text-input"); // 入力する文章の全取得
-    const openKanjiCheckbox = document.getElementById("config-open-kanji"); // "漢字をひらく"チェックボックスがONかどうか
     const loadingPage = document.getElementById("loading"); // ローディング画面
     const resultPage = document.getElementById("result"); // 校正結果表示ページ
     const originalTextDiv = document.getElementById("text-input"); // 校f正前の文章
@@ -13,6 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentCardContainer = document.getElementById("commentCardContainer"); // 指摘文ごとの指摘カード
     const accesError = document.getElementById("accesError"); // エラー画面
 
+    // POSTする設定
+    const openKanjiCheckbox = document.getElementById("ConfigOpenKanji"); // "漢字をひらく"チェックボックスがONかどうか
+    const SuggestErrorsOrCorrectionsCheckbox = document.getElementById("SuggestErrorsOrCorrections"); // "文法の誤りや修正を提案する"チェックボックスがONかどうか
+    const SuggetForPapersAndReportsCheckbox = document.getElementById("SuggetForPapersAndReports"); // "論文・レポートに適した文体を提案する"チェックボックスがONかどうか
+    const CorrectingBadWritingCheckbox = document.getElementById("CorrectingBadWriting"); // "意味の伝わらない悪文を添削する"チェックボックスがONかどうか
+
 
     let textElementList = [];
     let suggestionList = [];
@@ -20,8 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ”校正を送信”するボタンを押した時の処理
     submitButton.addEventListener("click", async () => {
-        const text = textInput.value; // 送信する文章本体\
-        const openKanji = openKanjiCheckbox.checked; // 校正の設定
+        const text = textInput.value; // 送信する文章本体
+        // 校正の設定
+        const openKanji = openKanjiCheckbox.checked; 
+        const suggestGrammar = SuggestErrorsOrCorrectionsCheckbox.checked; 
+        const suggestAcademicWriting = SuggetForPapersAndReportsCheckbox.checked; 
+        const fixIncoherentSentences = CorrectingBadWritingCheckbox.checked; 
 
         
         if (text.trim() === "") { // フォームが空かどうかのチェック
@@ -39,8 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const requestData = {   
             text: text,
             configs: {
-             open_kanji: openKanji
-             }
+             open_kanji: openKanji,
+             suggest_grammar_corrections: suggestGrammar,
+             suggest_academic_writing_style: suggestAcademicWriting,
+             fix_incoherent_sentences_beta: fixIncoherentSentences
+            }
         };
 
         try {
