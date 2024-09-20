@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="styles/result_all.css">
     <link rel="stylesheet" href="styles/result_sentence.css">
     <link rel="stylesheet" href="styles/result_comment.css">
+    <link rel="stylesheet" href="styles/access_error.css">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +71,16 @@
     </div>
 
 
+    <!-- アクセスエラー画面 -->
+    <div id="accesError" style="display: none;">
+        <div id="errorContainer">
+            <div id="error">
+                <img src="img/error.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+
     <!---------------- ローディング画面 ---------------->
     <div id="loading" style="display: none;">
         <div id="loadingContainer">
@@ -92,7 +104,7 @@
                     <!-- はいります --------->
                 </div>
                 <!---------------- 指摘の個数表示カード ----------------->
-                <div id="resultFooterContainer" style="display: block;">
+                <div id="resultFooterContainer" style="display: none;">
                     <div id="resultFooter">
                         <div id="resultFooterContentContainer">
                             <div id="footerTop">

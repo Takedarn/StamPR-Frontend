@@ -3,7 +3,16 @@
     font-family: "Noto Sans JP", system-ui;
     font-optical-sizing: auto;
     font-weight: 900;
-  }
+}
+
+label {
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+#config-open-kanji {
+    accent-color: #2E933C;
+}
 
 #newFooter {
     margin-right: 10px;
@@ -29,10 +38,18 @@
     flex-direction: column;
     width: 90%;
     height: 95%;
+    border-radius: 20px;
 }
 
 #optionHeader {
     height: 50px;
+}
+
+#optionHeader h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 10px;
+    color: #525252;
 }
 
 #optionMain {
@@ -50,8 +67,8 @@
 }
 
 #runkouseiButton {
-    border-radius: 5px;
-    width: 366px;
+    border-radius: 25px;
+    width: 300px;
     height: 46px;
     background-color: #2e933c;
     display: flex;
@@ -71,6 +88,7 @@
 #runKouseiButtonContent h3 {
     font-size: 16px;
     color: #fff;
+    font-weight: 600;
 }
 
 #optionHeader {
@@ -80,9 +98,5 @@
 }
 
 #backtotop {
-    width: 23px;
-}
-
-.optionCheckbox {
-    margin: 20px 0 0 0;
+    width: 20px;
 }

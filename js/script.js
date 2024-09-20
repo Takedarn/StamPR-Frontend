@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentMain = document.getElementById("commentMain");
     const resultFooterContainer = document.getElementById("resultFooterContainer"); // 文章内の指摘箇所個数表示カード
     const commentCardContainer = document.getElementById("commentCardContainer"); // 指摘文ごとの指摘カード
+    const accesError = document.getElementById("accesError"); // エラー画面
 
     let textElementList = [];
     let suggestionList = [];
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             // バック側のサーバにPOSTする
             // 内容：文章, 校正の設定
-            const response = await fetch("http://kousei-ai-backend-env-lib.eba-gabwpxxb.ap-northeast-1.elasticbeanstalk.com/", {
+            const response = await fetch("http://0.0.0.0:5050", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -58,7 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
         displayProofreadResult(responseData);
 
         } catch (error) {
-            console.error("エラーが発生しました:", error);
+            footerMainTitle.style.display = "block";
+            accesError.style.display = "block";
+            setTimeout(function() {
+                location.reload();  
+            }, 5000); // 5秒
         } finally {
             // ローディング表示を非表示
             loadingPage.style.display = "none";
@@ -157,31 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 } 
             });
         }
-
-        // document.addEventListener("click", function(event) {
-        //     // クリックされた要素を取得
-        //     const clickedElement = event.target;
-        //     const clickedElementscontent = event.target.textContent;
-        
-        //     // 取得した要素をログに出力
-        //     console.log("クリックされた要素:", clickedElement);
-        //     console.log("クリックされた要素:", clickedElementscontent);
-
-           
-        // });
     } 
 });
-
-
-// document.addEventListener("click", function(event) {
-//     // クリックされた要素を取得
-//     const clickedElement = event.target;
-
-//     // 取得した要素をログに出力
-//     console.log("クリックされた要素:", clickedElement);
-
-
-// });
 
 
 
