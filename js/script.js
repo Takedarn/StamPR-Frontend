@@ -87,12 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             if (d.suggestions.length > 0) {
-                // 校正すべき内容が含まれている場合、黄色のマーカーを追加
+                // 校正すべき内容が含まれている場合、緑色のマーカーを追加
                 ele.style.color = "#2E933C";
                 cntSuggestion += 1;   
             } 
 
-            
             resultSentece.appendChild(ele);
             cnt += 1;
         });
@@ -102,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resultPage.style.display = "block";
         footerMainTitle.innerHTML = "文章内に" + String(cntSuggestion) + "つ指摘箇所が見つかりました!"
 
+
         for (let i = 0; i < textElementList.length; i++) {
             ele1 = textElementList[i];
             ele1.addEventListener('click', function() {
@@ -109,9 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 for (let j = 0; j < textElementList.length; j++) {
                     ele2 = textElementList[j];
                     if (i === j) {
-                        ele2.style.color = "#2E933C";
+                        ele2.style.color = "#2E933C"; // primary colorにする
+                        
                     } else {
-                        ele2.style.color = "#E8E9EB";
+                        ele2.style.color = "#E8E9EB"; // 薄いグレー
                     }
                 }
             });

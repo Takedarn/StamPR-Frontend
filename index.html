@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>StamPR</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles/top.css">
@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="styles/loading.css">
     <link rel="stylesheet" href="styles/result_all.css">
     <link rel="stylesheet" href="styles/result_sentence.css">
+    <link rel="stylesheet" href="styles/result_comment.css">
 </head>
 
 <body>
     <!-- トップ画面 -->
-    <div id="topContainer" style="display: block;">
+    <div id="topContainer" style="display: none;">
         <div id="topTest">
             <header>
                 <img id="appLogoImg" src="img/app_logo.svg" alt="app_logo">
@@ -73,7 +74,7 @@
 
 
     <!---------------- 結果表示画面 ----------------->
-    <div id="result" style="display: none">
+    <div id="result" style="display: block">
         <div id="resultContainer">
             <div id="resultTest">
                 <div id="resultHeader">
@@ -84,7 +85,7 @@
                     <!-- 校正された結果が  -->
                     <!-- はいります --------->
                 </div>
-                <div id="resultFooterContainer">
+                <div id="resultFooterContainer" style="display: none;">
                     <div id="resultFooter">
                         <div id="resultFooterContentContainer">
                             <div id="footerTop">
@@ -99,6 +100,9 @@
                         </div>
                     </div>      
                 </div>
+                <dic id="commentContainer">
+                    <h1>Hello</h1>
+                </dic>
             </div>
         </div>
     </div>
