@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resultPage.style.display = "block";
 
         if (cntSuggestion === 0) {
-            footerMainTitle.innerHTML = "文章内は校正する必要はありません！";
+            footerMainTitle.innerHTML = "校正する必要はありません！";
             const footerMainSubtitle = document.getElementById("footerMainSubtitle");
             footerMainSubtitle.style.fontSize = "12px";
             footerMainSubtitle.innerHTML = "おめでとうございます 🎉";
@@ -172,28 +172,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         }
-    }
-});
 
-// 詳細の指摘取消をクリックすると詳細カードを消して指摘箇所カードを表示する
-document.getElementById("commnetHeaderCancel").addEventListener("click", () => {
-    // 指摘詳細カードの非表示
-    const commentCardContainer = document.getElementById("commentCardContainer");
-    commentCardContainer.style.display = "none";
-    
-    // 指摘回数表示カードの表示
-    const resultFooterContainer = document.getElementById("resultFooterContainer");
-    resultFooterContainer.style.display = "block";
-    
-    // 文ごとの色をリセットする処理
-    for (let i = 0; i < textElementList.length; i++) {
-        let ele = textElementList[i];
-        // 校正すべき内容がある文は緑色、ない文は黒色に戻す
-        if (suggestionList[i].length > 0) {
-            ele.style.color = "#2E933C"; // 緑色
-        } else {
-            ele.style.color = "#000000"; // 黒色
-        }
+        // 詳細の指摘取消をクリックすると詳細カードを消して指摘箇所カードを表示する
+        document.getElementById("commnetHeaderCancel").addEventListener("click", () => {
+            // 指摘詳細カードの非表示
+            const commentCardContainer = document.getElementById("commentCardContainer");
+            commentCardContainer.style.display = "none";
+            
+            // 指摘回数表示カードの表示
+            const resultFooterContainer = document.getElementById("resultFooterContainer");
+            resultFooterContainer.style.display = "block";
+            
+            // 文ごとの色をリセットする処理
+            resetTextColors();
+        });
+
+        // 文ごとに色をリセットする関数
+        function resetTextColors() {
+            for (let i = 0; i < textElementList.length; i++) {
+                let ele = textElementList[i];
+                // 校正すべき内容がある文はprimary color、ない文はデフォルトの色に戻す
+                if (suggestionList[i].length > 0) {
+                    ele.style.color = "#2E933C"; // 校正すべき内容がある文
+                } else {
+                    ele.style.color = "#525252"; //  校正する必要がない文
+                }
+            }
+        }  
     }
 });
 
