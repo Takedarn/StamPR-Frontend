@@ -1,7 +1,7 @@
 {
     "short_name": "StamPR",
     "name": "StamPR",
-    "display": "fullscreen",
+    "display": "standalone",
     "start_url": "http://stampr.s3-website-ap-northeast-1.amazonaws.com/",
     "icons": [
         {
@@ -10,5 +10,6 @@
             "type": "image/png"
         }
     ],
-    "background_color": "#fff"
+    "background_color": "#fff",
+    "theme_color": "#ffffff" 
 }
