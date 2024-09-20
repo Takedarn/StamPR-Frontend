@@ -47,7 +47,8 @@ main {
     width: 100%;
     height: 100%;
     font-size: 23px;
-    font-weight: 900;
+    font-weight: 500;
+    line-height: 1.6;
     white-space: pre-wrap;
     overflow-wrap: break-word; /* コンテンツが横幅を超えた際に折り返す */
     text-align: left;

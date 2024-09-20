@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentCardContainer = document.getElementById("commentCardContainer"); // 指摘文ごとの指摘カード
     const accesError = document.getElementById("accesError"); // エラー画面
 
+
     let textElementList = [];
     let suggestionList = [];
 
@@ -28,11 +29,26 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        // ローディング表示
+        //topContainerを非表示にさせる
         topContainer.style.display = "none"; // 文章入力画面と校正設定画面のセットを非表示する
-        loadingPage.style.display = "block"; // ローディング画面を表示させる
-        
+        // ローディング画面を表示させる
+        // 3秒間繰り返し処理を実行し、次の処理に移行しないようにする
+        await new Promise((resolve) => {
+            const intervalTime = 100; // 繰り返す間隔（ミリ秒）
+            let elapsedTime = 0;
 
+            const interval = setInterval(() => {
+                loadingPage.style.display = "block"; // ローディング画面を表示
+                elapsedTime += intervalTime;
+
+                if (elapsedTime >= 1500) { // 1.5秒経過したら終了
+                    clearInterval(interval);
+                    resolve(); // 1,5秒経過後に次の処理を実行
+                }
+            }, intervalTime);
+        });
+
+        
         // バック側に送信するデータを作成
         const requestData = {   
             text: text,
@@ -113,7 +129,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 結果表示を有効に
         resultPage.style.display = "block";
-        footerMainTitle.innerHTML = "文章内に" + String(cntSuggestion) + "つ指摘箇所が見つかりました!"
+
+        if (cntSuggestion === 0) {
+            footerMainTitle.innerHTML = "文章内は校正する必要はありません！";
+            const footerMainSubtitle = document.getElementById("footerMainSubtitle");
+            footerMainSubtitle.style.fontSize = "12px";
+            footerMainSubtitle.innerHTML = "おめでとうございます 🎉";
+        } else {
+            footerMainTitle.innerHTML = "文章内に" + String(cntSuggestion) + "つ指摘箇所が見つかりました!";
+        }
 
 
         for (let i = 0; i < textElementList.length; i++) {
@@ -171,6 +195,22 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("appLogoImg").addEventListener("click", () => {
     location.reload(); 
 });
+
+// トップ画面のロゴ画像をクリックするとページをリロードする
+document.getElementById("footerBottomTitle").addEventListener("click", () => {
+    location.reload(); 
+});
+
+// 詳細の指摘取消をクリックすると詳細カードを決して指摘箇所カードを表示する
+document.getElementById("commnetHeaderCancel").addEventListener("click", () => {
+    // 指摘詳細カードの非表示
+    const commentCardContainer = document.getElementById("commentCardContainer");
+    commentCardContainer.style.display = "none";
+    // 指摘回数表示カードの表示
+    const resultFooterContainer = document.getElementById("resultFooterContainer");
+    resultFooterContainer.style.display = "block";
+});
+
 
 
 // 校正を始めるときの処理
