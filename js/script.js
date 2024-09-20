@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             // バック側のサーバにPOSTする
             // 内容：文章, 校正の設定
-            const response = await fetch("http://0.0.0.0:5050", {
+            const response = await fetch("http://kousei-ai-backend-env-lib.eba-gabwpxxb.ap-northeast-1.elasticbeanstalk.com/process_text", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
