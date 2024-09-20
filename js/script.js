@@ -8,15 +8,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const topContainer = document.getElementById("topContainer"); // 
     const resultSentece = document.getElementById("resultMain"); // 文章入力画面と校正設定画面のセット
     const footerMainTitle = document.getElementById("footerMainTitle"); // 文章入力画面と校正設定画面のセット
+    const commentMain = document.getElementById("commentMain");
+    const resultFooterContainer = document.getElementById("resultFooterContainer"); // 文章内の指摘箇所個数表示カード
+    const commentCardContainer = document.getElementById("commentCardContainer"); // 指摘文ごとの指摘カード
 
-    let  textElementList = [];
+    let textElementList = [];
+    let suggestionList = [];
 
 
     // ”校正を送信”するボタンを押した時の処理
     submitButton.addEventListener("click", async () => {
         const text = textInput.value; // 送信する文章本体\
         const openKanji = openKanjiCheckbox.checked; // 校正の設定
-
 
         
         if (text.trim() === "") { // フォームが空かどうかのチェック
@@ -67,13 +70,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function displayProofreadResult(data) {
         console.log(data)
 
-        let receivedSentence = [];
         let cnt = 0;
         let cntSuggestion = 0;
 
         //dataの中の各インデックスに対して1つずつ取り出して処理する
         data.sentences.forEach(d => {
+            console.log(d);
+            
+
             let sentenceText = d.original_sentence;
+            let suggestions = d.suggestions;
+    
 
             let ele = document.createElement('span');
             ele.innerHTML = sentenceText;
@@ -83,8 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ele.className = "resultText"
             ele.setAttribute("id", textId);
 
-            textElementList.push(ele);
+            resultSentece.appendChild(ele);
 
+            textElementList.push(ele);
+            suggestionList.push(suggestions);
 
             if (d.suggestions.length > 0) {
                 // 校正すべき内容が含まれている場合、緑色のマーカーを追加
@@ -92,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 cntSuggestion += 1;   
             } 
 
-            resultSentece.appendChild(ele);
+            
             cnt += 1;
         });
 
@@ -105,6 +114,10 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < textElementList.length; i++) {
             ele1 = textElementList[i];
             ele1.addEventListener('click', function() {
+
+                resultFooterContainer.style.display = "none";
+                commentCardContainer.style.display = "block";
+
                 // ele.remove();
                 for (let j = 0; j < textElementList.length; j++) {
                     ele2 = textElementList[j];
@@ -115,29 +128,65 @@ document.addEventListener("DOMContentLoaded", () => {
                         ele2.style.color = "#E8E9EB"; // 薄いグレー
                     }
                 }
+                console.log(suggestionList[i]);
+
+                commentMain.innerHTML = ``
+
+                for(let j = 0; j < suggestionList[i].length; j++) {
+                    // console.log(j + 1)
+                    // console.log(suggestionList[i][j].title);
+                    // console.log(suggestionList[i][j].comment);
+
+                    let indexElement = document.createElement('div');
+                    indexElement.innerHTML = j + 1;
+
+                    let titleElement = document.createElement('div');
+                    titleElement.innerHTML = suggestionList[i][j].title;
+
+                    let commentElement = document.createElement('div');
+                    commentElement.innerHTML = suggestionList[i][j].comment;
+
+                    let suggestionContainer = document.createElement('div');
+                    suggestionContainer.innerHTML = indexElement.innerHTML + 
+                                                    titleElement.innerHTML + 
+                                                    commentElement.innerHTML;
+
+                    commentMain.appendChild(suggestionContainer);
+
+    
+                } 
             });
         }
+
+        // document.addEventListener("click", function(event) {
+        //     // クリックされた要素を取得
+        //     const clickedElement = event.target;
+        //     const clickedElementscontent = event.target.textContent;
+        
+        //     // 取得した要素をログに出力
+        //     console.log("クリックされた要素:", clickedElement);
+        //     console.log("クリックされた要素:", clickedElementscontent);
+
+           
+        // });
     } 
 });
 
 
-document.addEventListener("click", function(event) {
-    // クリックされた要素を取得
-    const clickedElement = event.target;
+// document.addEventListener("click", function(event) {
+//     // クリックされた要素を取得
+//     const clickedElement = event.target;
 
-    // 取得した要素をログに出力
-    console.log("クリックされた要素:", clickedElement);
-});
+//     // 取得した要素をログに出力
+//     console.log("クリックされた要素:", clickedElement);
+
+
+// });
 
 
 
 // トップ画面のロゴ画像をクリックするとページをリロードする
 document.getElementById("appLogoImg").addEventListener("click", () => {
-    location.reload(); 
-});
-
-// トップ画面のロゴ画像をクリックするとページをリロードする
-document.getElementById("footerBottomTitle").addEventListener("click", () => {
     location.reload(); 
 });
 

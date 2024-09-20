@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/loading.css">
     <link rel="stylesheet" href="styles/result_all.css">
     <link rel="stylesheet" href="styles/result_sentence.css">
+    <link rel="stylesheet" href="styles/result_comment.css">
 </head>
 
 <body>
@@ -25,8 +26,9 @@
             </main>
             <footer id="original-footer" style="display: block;">
                 <div id="origina-fotterContainer">
-                    <div id="submit-button"><h3 id="startKouseititle">校正を始める</h3><img id="settings" src="img/settings.svg" alt="">
-                </div>
+                    <div id="submit-button">
+                        <h3 id="startKouseititle">校正を始める</h3><img id="settings" src="img/settings.svg" alt="">
+                    </div>
             </footer>
             <!-- 校正設定画面 -->
             <footer id="newFooter" style="display: none;">
@@ -37,7 +39,7 @@
                             <h3></h3>
                             <h3>オプション</h3>
                             <h3></h3>
-                            <img id="backtotop"  src="img/cancel.svg" alt="">
+                            <img id="backtotop" src="img/cancel.svg" alt="">
                         </div>
                         <div id="optionMain">
                             <div class="optionCheckbox">
@@ -84,7 +86,8 @@
                     <!-- 校正された結果が  -->
                     <!-- はいります --------->
                 </div>
-                <div id="resultFooterContainer">
+                <!---------------- 指摘の個数表示カード ----------------->
+                <div id="resultFooterContainer" style="display: block;">
                     <div id="resultFooter">
                         <div id="resultFooterContentContainer">
                             <div id="footerTop">
@@ -97,7 +100,33 @@
                                 <button id="footerBottomTitle" class="favorite styled" type="button">入力文を取り消す</button>
                             </div>
                         </div>
-                    </div>      
+                    </div>
+                </div>
+                <!---------------- 指摘文ごとの指摘カード ----------------->
+                <div id="commentCardContainer"  style="display: none;">
+                    <div id="commentCardMain">
+                        <div id="commentHeader">
+                            <div id="commentHeaderCancelBtnContainer">
+                                <h3></h3>
+                                <div></div>
+                                <img src="img/この文では.svg" alt="">
+                                <img id="commnetHeaderCancel" src="img/cancel.svg" alt="cancel">
+                            </div>
+                        </div>
+                        <div id="commentMain">
+                            
+                        </div>
+                        <div id="commentFooter">
+                            <div id="prevnextBtnContainer">
+                                <div id="prevSentenceBtn">
+                                    <img id="prev" src="img/go_left_white.svg" alt="">
+                                </div>
+                                <div id="nextSentenceBtn">
+                                    <img id="next" src="img/go_right_white.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

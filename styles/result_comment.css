@@ -1,0 +1,96 @@
+#commentCardContainer {
+    border: solid rgb(212, 212, 212);
+    box-shadow: 0px -10px 20px -20px #565656;
+    border-radius: 20px 20px 0 0;
+    height: 350px;
+
+}
+
+#resultFooterContainer {
+    width: 100%;
+}
+
+#commentCardMain {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100%;
+}
+
+#commentHeader {
+    border-radius: 20px 20px 0 0;
+    height: 20%;
+}
+  
+#commentMain {
+    flex: 1;
+    height: 55%;
+}
+  
+#commentFooter {
+    display: flex;
+    justify-content: flex-end;
+    height: 20%;
+}
+
+#commentHeaderCancelBtnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    height: 100%;
+}
+
+#commnetHeaderCancel {
+    width: 20px;
+    
+}
+
+#eyes {
+    width: 25px;
+}
+
+#commentTitle {
+    font-size: 15px;
+}
+
+#prevnextBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 100%;
+}
+
+#nextSentenceBtn {
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: #2E933C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#next {
+    width: 22px;
+    height: 22px;  
+}
+
+#prevSentenceBtn {
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: #2E933C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#prev {
+    width: 22px;
+    height: 22px;
+}
