@@ -4,14 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const openKanjiCheckbox = document.getElementById("config-open-kanji"); // "漢字をひらく"チェックボックスがONかどうか
     const loadingPage = document.getElementById("loading"); // ローディング画面
     const resultPage = document.getElementById("result"); // 校正結果表示ページ
-    const originalTextDiv = document.getElementById("text-input"); // 校正前の文章
-    const topContainer = document.getElementById("topContainer"); // 文章入力画面と校正設定画面のセット
+    const originalTextDiv = document.getElementById("text-input"); // 校f正前の文章
+    const topContainer = document.getElementById("topContainer"); // 
     const resultSentece = document.getElementById("resultMain"); // 文章入力画面と校正設定画面のセット
+    const footerMainTitle = document.getElementById("footerMainTitle"); // 文章入力画面と校正設定画面のセット
+
+    let  textElementList = [];
+
 
     // ”校正を送信”するボタンを押した時の処理
     submitButton.addEventListener("click", async () => {
         const text = textInput.value; // 送信する文章本体\
         const openKanji = openKanjiCheckbox.checked; // 校正の設定
+
 
         
         if (text.trim() === "") { // フォームが空かどうかのチェック
@@ -63,25 +68,69 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(data)
 
         let receivedSentence = [];
-    
+        let cnt = 0;
+        let cntSuggestion = 0;
+
         //dataの中の各インデックスに対して1つずつ取り出して処理する
         data.sentences.forEach(d => {
             let sentenceText = d.original_sentence;
 
             let ele = document.createElement('span');
             ele.innerHTML = sentenceText;
-        
 
-            // コメントをすべてまとめて表示するためのdivを作成
-            // const commentsDiv = document.createElement("div");
-            // commentsDiv.className = "comments";
-            ele.setAttribute("id", "text-input");
+            textId = "textId" + String(cnt);
+        
+            ele.className = "resultText"
+            ele.setAttribute("id", textId);
+
+            textElementList.push(ele);
+
+
             if (d.suggestions.length > 0) {
                 // 校正すべき内容が含まれている場合、黄色のマーカーを追加
                 ele.style.color = "#2E933C";
-            
+                cntSuggestion += 1;   
+            } 
 
-                // d.suggestions.forEach(suggestion => {
+            
+            resultSentece.appendChild(ele);
+            cnt += 1;
+        });
+
+
+        // 結果表示を有効に
+        resultPage.style.display = "block";
+        footerMainTitle.innerHTML = "文章内に" + String(cntSuggestion) + "つ指摘箇所が見つかりました!"
+
+        for (let i = 0; i < textElementList.length; i++) {
+            ele1 = textElementList[i];
+            ele1.addEventListener('click', function() {
+                // ele.remove();
+                for (let j = 0; j < textElementList.length; j++) {
+                    ele2 = textElementList[j];
+                    if (i === j) {
+                        ele2.style.color = "#2E933C";
+                    } else {
+                        ele2.style.color = "#E8E9EB";
+                    }
+                }
+            });
+        }
+    } 
+});
+
+
+document.addEventListener("click", function(event) {
+    // クリックされた要素を取得
+    const clickedElement = event.target;
+
+    // 取得した要素をログに出力
+    console.log("クリックされた要素:", clickedElement);
+});
+
+// クリックでほかのIDの文をグレーにして自分だけ緑にする
+function HighlightTargetSentece() {
+    // d.suggestions.forEach(suggestion => {
                 //     const commentDiv = document.createElement("div");
                 //     commentDiv.className = "suggestion-comment";
                 //     commentDiv.textContent = suggestion.comment;
@@ -101,23 +150,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // sentenceDiv.appendChild(commentsDiv);
             // originalTextDiv.appendChild(sentenceDiv);
-            }
-            resultSentece.appendChild(ele);
-        });
+ }
 
-        console.log(resultSentece)
 
-        
 
-        // 結果表示を有効に
-        resultPage.style.display = "block";
-    }
-    
-});
 
 
 // トップ画面のロゴ画像をクリックするとページをリロードする
 document.getElementById("appLogoImg").addEventListener("click", () => {
+    location.reload(); 
+});
+
+// トップ画面のロゴ画像をクリックするとページをリロードする
+document.getElementById("footerBottomTitle").addEventListener("click", () => {
     location.reload(); 
 });
 
