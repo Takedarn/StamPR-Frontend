@@ -5,7 +5,7 @@
     "start_url": "http://stampr.s3-website-ap-northeast-1.amazonaws.com/",
     "icons": [
         {
-            "src": "img/appLogopng.png",
+            "src": "img/appLogo.png",
             "sizes": "192x192",
             "type": "image/png"
         }

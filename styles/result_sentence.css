@@ -1,3 +1,11 @@
+
+* {
+    font-family: "Noto Sans JP", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 600;
+
+}
+
 .resultText {
     color: #727272;
     width: 100%;

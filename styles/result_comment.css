@@ -1,3 +1,10 @@
+* {
+    font-family: "Noto Sans JP", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 600;
+}
+
+
 #commentCardContainer {
     border: solid rgb(212, 212, 212);
     box-shadow: 0px -10px 20px -20px #565656;

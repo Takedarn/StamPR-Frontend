@@ -1,3 +1,10 @@
+
+* {
+    font-family: "Noto Sans JP", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 900;
+  }
+
 #newFooter {
     margin-right: 10px;
     width: 100%;
@@ -20,7 +27,7 @@
     display: flex;
     box-shadow: 0px 0px 17px -7px #565656;
     flex-direction: column;
-    width: 95%;
+    width: 90%;
     height: 95%;
 }
 
