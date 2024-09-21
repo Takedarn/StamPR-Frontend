@@ -24,4 +24,3 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 sync --delete . s3://stampr.click
-          aws s3 sync --delete . s3://stampr
