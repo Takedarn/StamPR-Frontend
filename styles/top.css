@@ -129,6 +129,8 @@ main {
 
 #submit-button:hover #settings {
     content: url('../img/setting_white.svg');
+    background-color:rgba(255, 255, 255, 0.233);
+    background-blend-mode:lighten;
 }
 
 #origina-fotterContainer {

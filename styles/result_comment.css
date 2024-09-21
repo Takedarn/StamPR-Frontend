@@ -17,11 +17,6 @@
     width: 100%;
 }
 
-#resultFooter {
-    background-image: url("../img/congra.png");
-    
-}
-
 #commentCardMain {
     display: flex;
     flex-direction: column;
