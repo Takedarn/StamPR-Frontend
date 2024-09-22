@@ -1,4 +1,4 @@
-# StasmPR
+# StamPR
 HackU 2024KANAZAWA出場作品のフロント部分実装です
 
 ## 環境構築
