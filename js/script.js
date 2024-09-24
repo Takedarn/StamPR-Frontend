@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const textInput = document.getElementById("text-input"); // 入力する文章の全取得
     const loadingPage = document.getElementById("loading"); // ローディング画面
     const resultPage = document.getElementById("result"); // 校正結果表示ページ
-    const originalTextDiv = document.getElementById("text-input"); // 校f正前の文章
+    const originalTextDiv = document.getElementById("text-input"); // 校正前の文章
     const topContainer = document.getElementById("topContainer"); // 
     const resultSentece = document.getElementById("resultMain"); // 文章入力画面と校正設定画面のセット
     const footerMainTitle = document.getElementById("footerMainTitle"); // 文章入力画面と校正設定画面のセット
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultFooterContainer = document.getElementById("resultFooterContainer"); // 文章内の指摘箇所個数表示カード
     const commentCardContainer = document.getElementById("commentCardContainer"); // 指摘文ごとの指摘カード
     const accesError = document.getElementById("accesError"); // エラー画面
+    const option = document.getElementById("option"); // 校正設定カード
 
     // POSTする設定
     const openKanjiCheckbox = document.getElementById("ConfigOpenKanji"); // "漢字をひらく"チェックボックスがONかどうか
@@ -22,6 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let textElementList = [];
     let suggestionList = [];
 
+
+    // ページアクセスしたときにスプラッシュ画面をする
+    setTimeout(function() {
+        var splashScreen = document.getElementById("splash-screen");
+        if (splashScreen) {
+        splashScreen.style.display = 'none';
+        topContainer.style.display = "block";
+        }
+    }, 1500); // 3秒
+    
 
     // ”校正を送信”するボタンを押した時の処理
     submitButton.addEventListener("click", async () => {
@@ -58,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             // バック側のサーバにPOSTする
             // 内容：文章, 校正の設定
-            const response = await fetch("http://kousei-ai-backend-env-lib.eba-gabwpxxb.ap-northeast-1.elasticbeanstalk.com/process_text", {
+            const response = await fetch("http://localhost:5050/process_text", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -73,11 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
         displayProofreadResult(responseData);
 
         } catch (error) {
-            footerMainTitle.style.display = "block";
-            accesError.style.display = "block";
-            setTimeout(function() {
-                location.reload();  
-            }, 5000); // 5秒
+            // エラーをキャッチしたら5秒後にトップページにリダイレクト
+            // footerMainTitle.style.display = "block";
+            // accesError.style.display = "block";
+            // setTimeout(function() {
+            //     location.reload();  
+            // }, 5000); // 5秒
         } finally {
             // ローディング表示を非表示
             loadingPage.style.display = "none";
@@ -175,9 +187,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         let suggestionContainer = document.createElement('div');
                         suggestionContainer.classList.add("suggestionContainer");
 
+                        let suggestionBorder = document.createElement('div');
+                        suggestionContainer.classList.add("suggestionBorder");
+
                         suggestionContainer.appendChild(indexElement);
                         suggestionContainer.appendChild(titleElement);
                         suggestionContainer.appendChild(commentElement);
+                        suggestionContainer.appendChild(suggestionBorder);
 
                         commentMain.appendChild(suggestionContainer);
                     } 
@@ -215,14 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
 // トップ画面のロゴ画像をクリックするとページをリロードする
 document.getElementById("appLogoImg").addEventListener("click", () => {
     location.reload(); 
 });
 
-// トップ画面のロゴ画像をクリックするとページをリロードする
+// 入力取り消しボタン押下でトップページへ遷移する
 document.getElementById("footerBottomTitle").addEventListener("click", () => {
     location.reload(); 
 });
@@ -263,4 +277,5 @@ document.addEventListener("DOMContentLoaded", () => {
         originalFooter.style.justifyContent = 'center';
         originalFooter.style.alignItems = 'center'; 
     });   
-});
+});  
+

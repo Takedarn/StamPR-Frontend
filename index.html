@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="styles/access_error.css">
     <link rel="stylesheet" href="styles/special.css">
     <link rel="stylesheet" href="styles/svgrotate.css">
+    <link rel="stylesheet" href="styles/splash.css">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,11 +25,18 @@
 </head>
 
 <body>
+    <!-- スプラッシュ画面 -->
+    <div id="splash-screen" style="display: block;">
+        <div id="splashMain">
+            <img id="splashLogo" src="img/app_logo.svg" alt="">
+        </div>
+    </div>
     <!-- トップ画面 -->
-    <div id="topContainer" style="display: block;">
+    <div id="topContainer" style="display: none;">
         <div id="topTest">
             <header>
                 <img id="appLogoImg" src="img/app_logo.svg" alt="app_logo">
+                <img  id="topBar" src="img/bar.svg" alt="">
             </header>
             <main>
                 <textarea id="text-input" placeholder="ここに校正したい文章を入力..."></textarea>
@@ -39,6 +47,10 @@
                         <h3 id="startKouseititle">校正を始める</h3><img id="settings" src="img/settings.svg" alt="">
                     </div>
             </footer>
+            <!-- ハンバーガーメニュー画面 -->
+
+
+
             <!-- 校正設定画面 -->
             <footer id="newFooter" style="display: none;">
                 <div id="newFooterContainer">
@@ -122,13 +134,12 @@
                 <!---------------- 指摘の個数表示カード ----------------->
                 <div id="resultFooterContainer" style="display: block;">
                     <div id="nyan">
-
                         <div id="resultFooter">
                             <div id="resultFooterContentContainer">
                                 <div id="footerTop">
                                     <div id="footerTopContainer">
-                                        <h3 id="footerMainTitle"><!-- ここに私的回数がはいる --></h3>
-                                        <h4 id="footerMainSubtitle">ハイライトされている文をクリックすると指摘内容が見られます。</h4>
+                                        <h3 id="footerMainTitle"><!-- ここに指摘箇所の回数 --></h3>
+                                        <h4 id="footerMainSubtitle">ハイライトされている文をタッチで指摘内容が見られます。</h4>
                                     </div>
                                 </div>
                                 <div id="footerBottom">
@@ -149,9 +160,7 @@
                                 <img id="commnetHeaderCancel" src="img/cancel.svg" alt="cancel">
                             </div>
                         </div>
-                        <div id="commentMain">
-                            
-                        </div>
+                        <div id="commentMain"></div>
                     </div>
                 </div>
             </div>

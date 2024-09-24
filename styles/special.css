@@ -1,28 +1,26 @@
-
-
 .suggestionContainer {
-    padding: 20px 20px 20px 20px;
-    height: auto;
+    padding: 10px 20px 10px 20px;
+    height: 130px;
     align-items: center;
 }
 
 .index {
-    margin: 0 0 5px 5px;
+    margin: 0 0 10px 10px;
     background-color: green;
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
 }
 
 .title {
-    margin: 0 0 5px 5px;
-    font-size: 18px;
+    margin: 0 0 5px 12px;
+    font-size: 16px;
     font-weight: bold;
     color: #4d4d4d;
 }
