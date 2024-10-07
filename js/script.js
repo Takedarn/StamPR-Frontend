@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             // バック側のサーバにPOSTする
             // 内容：文章, 校正の設定
-            const response = await fetch("http://localhost:5050/process_text", {
+            const response = await fetch("http://kousei-ai-backend.eba-pe83fapr.ap-northeast-1.elasticbeanstalk.com/process_text", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
