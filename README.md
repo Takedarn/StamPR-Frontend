@@ -8,8 +8,10 @@ StamPRは、論文を校正するためのAI校正サービスです。
 
 <img width="1100" alt="image" src="https://github.com/user-attachments/assets/da44cd53-b00a-4801-ac2c-cad5cc664321">
 
-# 本リポジトリはフロント側です。
+## 本リポジトリはフロント側です。
 バック側のリポジトリを用意する必要があります。
+[バックエンド側](https://github.com/scoop-n-e/kousei-ai-backend)
 
+## デプロイ先
 [以下URLは停止中]
 http://stumpr.click
